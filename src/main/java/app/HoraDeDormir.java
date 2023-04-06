@@ -1,18 +1,23 @@
 package main.java.app;
 
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class HoraDeDormir {
   public static void main(String[] args) {
 
-    LocalTime lt = LocalTime.now();
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-    LocalTime sleepTime = LocalTime.parse("23:00");
+    Greeter greeter = new Greeter();
+    
+    LocalTime lt = greeter.getLocalTime();
+    LocalTime sleepTime = greeter.getSleepTime();
 
-    System.out.println("Son las " + lt.format(formatter));
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+    String timeNow = lt.format(formatter);
+
+    System.out.println("Son las " + timeNow);
     System.out.println("La hora de dormir es a las " + sleepTime);
+
     
     long horas = lt.until(sleepTime, ChronoUnit.HOURS);
     long minutos = lt.until(sleepTime, ChronoUnit.MINUTES);
