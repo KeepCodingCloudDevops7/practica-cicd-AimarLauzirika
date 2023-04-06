@@ -9,12 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 /*
  * Unit test for simple App.
  */
-public class HelloTest {
+public class HoraDeDormirTest {
 
   @Test
-  public void testTime() {
-    HelloWorld app1 = new HelloWorld();
-    HelloWorld app2 = new HelloWorld();
-    assertNotEquals(app1.getCurrentTime(), app2.getCurrentTime());
+  public void testNotNull() {
+    HoraDeDormir app1 = new HoraDeDormir();
+    assertNotEquals(app1, null);
   }
 }

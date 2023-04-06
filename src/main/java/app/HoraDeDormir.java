@@ -2,7 +2,6 @@ package main.java.app;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class HoraDeDormir {
   public static void main(String[] args) {
@@ -19,27 +18,24 @@ public class HoraDeDormir {
     System.out.println("La hora de dormir es a las " + sleepTime);
 
     
-    long horas = lt.until(sleepTime, ChronoUnit.HOURS);
-    long minutos = lt.until(sleepTime, ChronoUnit.MINUTES);
+    long diffHours = greeter.diffHours();
+    long diffMinutes = greeter.diffMinutes();
 
-    if (minutos < 1) {
+    if (diffMinutes < 1) {
       System.out.println("Ya deberias estar durmiendo.");
       return;
     }
 
-    if (horas > 0) {
+    if (diffHours > 0) {
 
-      long mins = minutos - (60 * horas);
-      System.out.println("Te quedan " + horas + " horas y " + mins + " minutos para ir a dormir.");
+      long mins = diffMinutes - (60 * diffHours);
+      System.out.println("Te quedan " + diffHours + " horas y " + mins + " minutos para ir a dormir.");
 
       return;
     }
 
-    if (horas < 1) {
-      System.out.println("Te quedan " + minutos + " minutos para ir a dormir.");
+    if (diffHours < 1) {
+      System.out.println("Te quedan " + diffMinutes + " minutos para ir a dormir.");
     }
-
-
   }
-
 }
