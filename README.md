@@ -3,4 +3,4 @@
 
 ## La Aplicación
 
-Es una aplicación escrita en JAVA...
+Es una aplicación escrita en JAVA.
