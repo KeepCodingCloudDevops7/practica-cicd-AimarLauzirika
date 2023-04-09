@@ -1,0 +1,48 @@
+Para este proyecto se utilizan dos nodos distintos con distintas versiones de Java. Son contenedores Docker con imágenes de Jenkins con Java de distintas verisiones (jdk11 y jdk17).
+
+REQUISITOS
+
+- Se necesita tener las llaves pública y privada SSH en el 'home' (~/.ssh/) para que Jenkins pueda conectarse a ellos.
+
+- Modificar las direcciones ip para cada contenedor en el fichero 'docker-compose.yaml'. También hace falta definir un rango ip para la red de docker.
+
+EJECUTAR LOS AGENTES
+
+Se crearán los contenedores cuando ejecutemos el fichero 'run.sh'. En la terminal, si nos situamos en la carpeta 'agents' podemos ejecutar el siguiente comando: './run.sh'
+
+
+
+CONFIGURACIÓN DE LOS AGENTES
+
+Configuraremos los agentes a través de Jenkins. Para cada uno de los agentes especificaremos lo siguiente:
+
+- Name: agent_jdk11 y agent_jdk17 (respectivamente para cada agente)
+
+Para distinguir los dos agentes. Conviene que se indique a que versión corresponde cada agente.
+
+- Description: (Opcional)
+
+- Number of executors: 2
+
+- Remote root directory: /home/jenkins
+
+- Labels: jdk11 y jdk17 (respectivamente para cada agente)
+
+Importante definir un label a cada agente para que en el pipeline podamos asignar las tareas a un determinado nodo.
+
+- Launch method: Launch agents via SSH
+
+  - Host: (Para cada agente el ip que se ha puesto en el 'docker-compose.yaml')
+  - Credentials: jenkins
+
+Node Properties
+Environment variables
+
+- JAVA_HOME: /opt/java/openjdk/
+- PATH: $PATH:$JAVA_HOME/bin
+
+Tool Locations
+
+- Name: (Git) default
+- Home: /usr/bin/git
+
