@@ -64,7 +64,7 @@ El pipeline de este proyecto es un ejemplo de 'Continuous Delivery' y consta de 
 
 Una configuración interesante que se le puede añadir al pipeline es que revise cada cierto tiempo si ha habido cambios en el repositorio. Para hacer esta configuración seleccionamos el pipeline desde Jenkins, y en `Scan Repository Triggers` activamos `Periodically if not otherwise run` y seleccionamos un intervalo.
 
-#### Rama dev (COntinuous Deploy)
+#### Rama dev (Continuous Deploy)
 
 También he creado una segunda rama llamada `dev` en el que se omite el paso de `Manual approval` para que el despliegue sea completamente automático.
 
