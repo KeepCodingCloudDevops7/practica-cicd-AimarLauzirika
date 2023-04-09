@@ -48,12 +48,6 @@ pipeline {
       }
     }
 
-    stage('Manual approval') {
-      steps {
-        input(message: 'Do you want to deploy in prod?', id: 'id', ok: 'Yes, deploy in prod')
-      }
-    }
-
     stage('Deploy in Prod') {
       steps {
         echo 'Simulating deployment in prod'
