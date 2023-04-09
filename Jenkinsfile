@@ -54,5 +54,11 @@ pipeline {
       }
     }
 
+    stage('Deploy in Prod') {
+      steps {
+        echo 'Simulating deployment in prod'
+      }
+    }
+
   }
 }
