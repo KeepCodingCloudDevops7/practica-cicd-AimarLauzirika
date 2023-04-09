@@ -60,8 +60,13 @@ El pipeline de este proyecto es un ejemplo de 'Continuous Delivery' y consta de 
 - Test (mvn test): Ejecuta los test de la aplicación. Para realizar los test se utiliza el nodo con la versión jdk 17. La razón por la que se utilizan distintos nodos es practicar la utilización de distintos nodos, no hay una razón específica en este ejercicio.
 - Package: Primero genera los artefactos (mvn jar:jar)y después los guarda (Archive the artifacts). Es útil para no acumular artefactos en exceso configurar el pipeline desde Jenkins (en 'Discard old items') para eliminar automáticamente artefactos antiguos. Se pueden eliminar por días de antiguedad o que sólo guarde un número concreto de artefactos.
 - Manual approval: La persona autorizada será la que podrá desplegar a producción o en su caso cancelar el despliegue de manera manual (Continuous Delivery). En este paso sería muy util que el pipeline envíe un aviso a dicha persona de que tiene la aprovación pendiente mediante un email u otro medio.
+- Deploy in prod: Este paso simula un despliegue a producción, en este proyecto solamente imprime 'Simulating deployment in prod'.
 
 Una configuración interesante que se le puede añadir al pipeline es que revise cada cierto tiempo si ha habido cambios en el repositorio. Para hacer esta configuración seleccionamos el pipeline desde Jenkins, y en `Scan Repository Triggers` activamos `Periodically if not otherwise run` y seleccionamos un intervalo.
+
+#### Rama dev (COntinuous Deploy)
+
+También he creado una segunda rama llamada `dev` en el que se omite el paso de `Manual approval` para que el despliegue sea completamente automático.
 
 ## Testing cada 30 minutos
 
