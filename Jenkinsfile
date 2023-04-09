@@ -38,5 +38,15 @@ pipeline {
       }
     }
 
+    stage('Package') {
+      steps {
+        echo 'Starting packaging...'
+        sh 'mvn jar:jar'
+        echo 'Packaging finished'
+        echo 'Archive the artifacts'
+        archiveArtifacts 'target/*.jar'
+      }
+    }
+
   }
 }
